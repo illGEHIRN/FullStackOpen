@@ -1,3 +1,5 @@
+// Defining the structures that are later to be used in the App function
+
 const Header = (props) => {
   console.log(props)
   return (
@@ -22,7 +24,7 @@ const Part = (props) => {
   console.log(props)
   return (
     <div>
-      <p>{props.part}</p>
+      <p>{props.part.name} {props.part.exercises}</p>
     </div>
   )
 }
@@ -36,31 +38,32 @@ const Total = (props) => {
 
 
 const App = () => {
+  // Defining the contents of the webpage (vars) which will be plugged into the structs defined earlier
+
+  // variable holding just a single string
   const course = 'Half Stack aplication development'
 
+  // array of variables
   const parts = [
     {name: 'Fundamentals of React', exercises: 10},
     {name: 'Uning props to pass data', exercises: 7},
     {name: 'State of a component', exercises: 14},
   ]
 
-  const part1 = {name: 'Fundamentals of React', exercises: 10}
-  const part2 = {name: 'Uning props to pass data', exercises: 7}
-  const part3 = {name: 'State of a component', exercises: 14}
-
+  // variable holding an intiger - sum of the exercises: [int]
   const total = parts[0].exercises + parts[1].exercises + parts[2].exercises
-
-
+  
   return (
     <div>
       
       <Header course={course} />
-      <Content parts={parts} />
-      <Total total={total} />
-      <Part part={part1} />
-      <Part part={part2} />
-      <Part part={part3} />
       
+      <Part part={parts[0]} />
+      <Part part={parts[1]} />
+      <Part part={parts[2]} />
+
+      <Total total={total} />
+
     </div>
   )
 }
